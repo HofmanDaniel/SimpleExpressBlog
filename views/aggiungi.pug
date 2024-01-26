@@ -1,0 +1,19 @@
+include components/base.pug
+include components/header.pug
+div.container-sm
+    form(action="/aggiungi" method="post" enctype="multipart/form-data")
+        .form-group
+            label(for="titolo") Titolo:
+            input#titolo.form-control(type="text" name="titolo" required)
+
+        .form-group
+            label(for="contenuto") Contenuto:
+            textarea#contenuto.form-control(name="contenuto" rows="10" required)
+
+        .form-group
+            label(for="cover") Cover:
+            input#cover.form-control(type="file" name="cover" accept="image/*")
+        br
+        .form-group
+            input.btn.btn-primary(type="submit" value="Invia")
+include components/footer.pug

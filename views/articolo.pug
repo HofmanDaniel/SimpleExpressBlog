@@ -1,0 +1,30 @@
+include components/base.pug
+include components/header.pug
+.container.mt-5
+    .container
+        if articoloTemp.cover != undefined
+            img.img-fluid.mx-auto.d-block(src= articoloTemp.cover style="max-height:250px")
+    h1.text-center.my-4=articoloTemp.titolo
+    hr
+    .row
+        .col-md-8.offset-md-2(style="white-space: break-spaces;")
+            p=articoloTemp.contenuto
+    hr
+    .container
+        each commento in articoloTemp.commenti
+            .bg-dark-subtle.rounded-4.p-2.my-3
+                b=commento.autore
+                p=commento.contenuto
+    .container
+        h3 Aggiungi un commento:
+        form(action="/aggiungiCommento/"+articoloTemp.id method="post")
+            .mb-3
+                label.form-label(for="autore") Nome:
+                input#name.form-control(type="text" name="autore" required="")
+            .mb-3
+                label.form-label(for="contenuto") Commento:
+                textarea#comment.form-control(name="contenuto" rows="4" required="")
+            br
+            button.btn.btn-primary(type="submit") Invia
+
+include components/footer.pug

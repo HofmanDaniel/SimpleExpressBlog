@@ -1,0 +1,12 @@
+include components/base.pug
+include components/header.pug
+
+each articolo in data
+    .container-md.p-2
+        .card.mb-4
+            .card-body
+                h5.card-title=articolo.titolo
+            .card-footer
+                a.btn.btn-primary.mx-2(href="/articolo/" + articolo.id) Leggi il post completo
+
+include components/footer.pug
